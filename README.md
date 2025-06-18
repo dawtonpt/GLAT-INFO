@@ -23,7 +23,6 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
-      /* Subtle paper-like texture */
       background-image: repeating-linear-gradient(135deg, #f7f7f7 0px, #f7f7f7 8px, #fff 8px, #fff 16px);
       transition: background 0.6s cubic-bezier(.4,0,.2,1), color 0.4s cubic-bezier(.4,0,.2,1);
     }
@@ -35,7 +34,6 @@
       gap: 12px;
       padding: 10px 20px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      /* Add a subtle diagonal lines texture */
       background-image: repeating-linear-gradient(45deg, #616161 0px, #616161 6px, #757575 6px, #757575 12px);
       transition: background 0.5s cubic-bezier(.4,0,.2,1);
     }
@@ -60,7 +58,6 @@
       padding: 32px 0 18px 0;
       text-align: center;
       box-shadow: 0 2px 12px #d32f2f33;
-      /* Subtle noise texture */
       background-image: url('https://www.transparenttextures.com/patterns/noise.png');
       transition: background 0.5s cubic-bezier(.4,0,.2,1);
     }
@@ -71,7 +68,6 @@
       flex-wrap: wrap;
       gap: 12px;
       padding: 14px 0;
-      /* Add a subtle diagonal lines texture */
       background-image: repeating-linear-gradient(45deg, #616161 0px, #616161 6px, #757575 6px, #757575 12px);
       transition: background 0.5s cubic-bezier(.4,0,.2,1);
     }
@@ -105,7 +101,6 @@
       box-shadow: 0 2px 16px #d32f2f22;
       padding: 32px 28px 24px 28px;
       transition: box-shadow 0.4s cubic-bezier(.4,0,.2,1), transform 0.4s cubic-bezier(.4,0,.2,1);
-      /* Subtle paper texture */
       background-image: repeating-linear-gradient(135deg, #fff 0px, #fff 12px, #f7f7f7 12px, #f7f7f7 24px);
     }
     section.active {
@@ -191,7 +186,8 @@
     .calendar-container {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: stretch;  /* was center, now stretch */
+      width: 100%;           /* added */
     }
     .calendar-controls {
       margin-bottom: 10px;
@@ -221,14 +217,16 @@
       box-shadow: 0 1px 8px #d32f2f22;
       margin-bottom: 18px;
       background-image: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
-      font-size: 1.25rem;           /* Make text larger */
-      min-width: 420px;             /* Make calendar wider */
-      max-width: 100%;
+      font-size: 1.25rem;
+      width: 100%;           /* ADDED: fill parent */
+      /* min-width: 420px;   REMOVED */
+      /* max-width: 100%;    REMOVED */
     }
     .calendar-table th, .calendar-table td {
       border: 1px solid var(--table-border);
-      width: 56px;                  /* Increase cell width */
-      height: 56px;                 /* Increase cell height */
+      width: 14.28%;         /* ADDED: 100%/7days */
+      min-width: 56px;       /* Optional: to keep readable on small screens */
+      height: 56px;
       text-align: center;
       font-size: 1.1em;
       transition: background 0.2s, color 0.2s;
@@ -270,7 +268,6 @@
       opacity: 0.95;
       transition: opacity 0.3s;
     }
-    /* Datas page */
     .important-dates-list {
       margin-top: 18px;
       font-size: 1.08rem;
@@ -313,7 +310,6 @@
       margin-top: 40px;
       font-size: 1rem;
       letter-spacing: 0.02em;
-      /* Subtle diagonal lines texture */
       background-image: repeating-linear-gradient(45deg, #616161 0px, #616161 6px, #757575 6px, #757575 12px);
       transition: background 0.5s cubic-bezier(.4,0,.2,1);
     }
