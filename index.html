@@ -116,6 +116,40 @@
       from { opacity: 0; transform: translateY(30px);}
       to { opacity: 1; transform: translateY(0);}
     }
+    .professores {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 12px;
+    }
+    .professor {
+      background: #f5f5f5;
+      border: 1px solid #bdbdbd;
+      padding: 14px 12px;
+      border-radius: 8px;
+      width: 220px;
+      box-shadow: 0 1px 6px #d32f2f22;
+      transition: box-shadow 0.3s, transform 0.3s;
+      background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+    }
+    .professor:hover {
+      box-shadow: 0 4px 16px #d32f2f33;
+      transform: translateY(-3px) scale(1.03);
+    }
+    .disciplina {
+      display: block;
+      margin-top: 8px;
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1.05em;
+      transition: color 0.3s;
+    }
+    .professor .email {
+      font-size: 0.9em;
+      color: #333;
+      margin-top: 6px;
+    }
+    /* Schedule Table */
     .schedule-table {
       border-collapse: collapse;
       width: 100%;
@@ -153,12 +187,147 @@
     .schedule-table td.empty {
       background: var(--bg);
     }
+    /* Calendar */
+    .calendar-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .calendar-controls {
+      margin-bottom: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .calendar-controls button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 6px 14px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.3s;
+    }
+    .calendar-controls button:hover {
+      background: var(--hover);
+      transform: scale(1.08);
+    }
+    .calendar-table {
+      border-collapse: collapse;
+      background: var(--bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 8px #d32f2f22;
+      margin-bottom: 18px;
+      background-image: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
+      font-size: 1.25rem;           /* Make text larger */
+      min-width: 420px;             /* Make calendar wider */
+      max-width: 100%;
+    }
+    .calendar-table th, .calendar-table td {
+      border: 1px solid var(--table-border);
+      width: 56px;                  /* Increase cell width */
+      height: 56px;                 /* Increase cell height */
+      text-align: center;
+      font-size: 1.1em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .calendar-table th {
+      background: var(--table-head);
+      color: var(--primary);
+    }
+    .calendar-table td.today {
+      background: var(--primary);
+      color: #fff;
+      font-weight: bold;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+    .calendar-table td.event {
+      background: var(--event);
+      color: var(--event-text);
+      font-weight: bold;
+      border-radius: 50%;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    .calendar-table td.event:hover::after {
+      content: attr(data-event);
+      position: absolute;
+      left: 50%;
+      top: 110%;
+      transform: translateX(-50%);
+      background: var(--event);
+      color: var(--event-text);
+      padding: 6px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+      font-size: 0.95em;
+      box-shadow: 0 2px 8px #0002;
+      z-index: 10;
+      opacity: 0.95;
+      transition: opacity 0.3s;
+    }
+    /* Datas page */
+    .important-dates-list {
+      margin-top: 18px;
+      font-size: 1.08rem;
+      color: var(--primary);
+      transition: color 0.3s;
+    }
+    .important-dates-list li {
+      margin-bottom: 8px;
+      transition: color 0.3s;
+    }
+    .resumo-button {
+      background: var(--secondary);
+      color: #fff;
+      border: none;
+      padding: 10px 14px;
+      margin: 8px 0;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      display: block;
+      box-shadow: 0 2px 8px #d32f2f11;
+    }
+    .resumo-button:hover {
+      background: var(--primary);
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px #d32f2f33;
+    }
+    @media (max-width: 900px) {
+      .professor {
+        width: 100%;
+      }
+      section { padding: 18px 6px; }
+    }
+    footer {
+      background: var(--secondary);
+      color: #fff;
+      text-align: center;
+      padding: 18px 0;
+      margin-top: 40px;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      /* Subtle diagonal lines texture */
+      background-image: repeating-linear-gradient(45deg, #616161 0px, #616161 6px, #757575 6px, #757575 12px);
+      transition: background 0.5s cubic-bezier(.4,0,.2,1);
+    }
+    footer a {
+      color: #ffe082;
+      text-decoration: underline;
+      transition: color 0.3s;
+    }
+    footer a:hover {
+      color: #fff176;
+    }
     section { display: none; }
-    section.active { display: block; }
+section.active { display: block; }
   </style>
-  <!-- Firebase App (the core Firebase SDK) -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 </head>
 <body>
   <div class="header-links">
@@ -321,20 +490,25 @@
     <div id="study-calendar-container"></div>
   </section>
 
-  <script>
-    // Firebase config
-    const firebaseConfig = {
-      apiKey: "AIzaSyDoVZwTuwx6Cgf1V5OsBx20CB26rcdx_Ls",
-      authDomain: "mathsgame-2bcb4.firebaseapp.com",
-      databaseURL: "https://mathsgame-2bcb4-default-rtdb.firebaseio.com",
-      projectId: "mathsgame-2bcb4",
-      storageBucket: "mathsgame-2bcb4.appspot.com",
-      messagingSenderId: "316993513512",
-      appId: "1:316993513512:web:bc9aee590dfa7191ecad1d"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
+  <!-- Firebase App (core) and Database SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"></script>
+<script>
+  // Your Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyDoVZwTuwx6Cgf1V5OsBx20CB26rcdx_Ls",
+    authDomain: "mathsgame-2bcb4.firebaseapp.com",
+    databaseURL: "https://mathsgame-2bcb4-default-rtdb.firebaseio.com",
+    projectId: "mathsgame-2bcb4",
+    storageBucket: "mathsgame-2bcb4.appspot.com",
+    messagingSenderId: "316993513512",
+    appId: "1:316993513512:web:bc9aee590dfa7191ecad1d"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+</script>
 
+  <script>
     // Tabs
     const buttons = document.querySelectorAll('.tab-btn');
     const sections = document.querySelectorAll('section');
@@ -344,8 +518,6 @@
         sections.forEach(s => s.classList.remove('active'));
         btn.classList.add('active');
         document.getElementById(btn.dataset.tab).classList.add('active');
-        // Render calendar if estudo tab is activated
-        if (btn.dataset.tab === "estudo") renderStudyCalendar();
       });
     });
 
@@ -514,6 +686,7 @@
         if (btn.dataset.tab === "estudo") renderStudyCalendar();
       });
     });
+
     // Render calendar if tab is active on load
     if (document.getElementById("estudo").classList.contains("active")) {
       renderStudyCalendar();
@@ -619,60 +792,42 @@
     document.getElementById("study-session-form-modal").style.display = "none";
   };
 
-  // Add session
-  document.body.addEventListener("submit", function(e) {
-    if (e.target && e.target.id === "study-session-form") {
-      e.preventDefault();
-      const cellKey = document.getElementById("study-session-form-modal").dataset.cellKey;
-      const title = document.getElementById("study-title").value.trim();
-      const desc = document.getElementById("study-desc").value.trim();
-      const name = document.getElementById("study-name").value.trim() || "Anónimo";
-      if (!title || !name) return;
-      const weekKey = getCurrentWeekKey();
-      db.ref("study_sessions/" + weekKey + "/" + cellKey).set({
-        title,
-        desc,
-        participants: [name]
-      }, renderStudyCalendar);
-      closeStudySessionForm();
-    }
-  });
-
   // Join session
   window.joinStudySession = function(cellKey) {
     const name = prompt("Digite o seu nome para participar:", "");
     if (!name) return;
-    const weekKey = getCurrentWeekKey();
-    const ref = db.ref("study_sessions/" + weekKey + "/" + cellKey + "/participants");
-    ref.once("value", snap => {
-      let participants = snap.val() || [];
-      if (!participants.includes(name)) {
-        participants.push(name);
-        ref.set(participants, renderStudyCalendar);
-      } else {
-        alert("Já está inscrito nesta sessão.");
-      }
-    });
+    const sessions = getStudySessions();
+    if (!sessions[cellKey]) return;
+    if (!sessions[cellKey].participants) sessions[cellKey].participants = [];
+    if (!sessions[cellKey].participants.includes(name)) {
+      sessions[cellKey].participants.push(name);
+      saveStudySessions(sessions);
+      renderStudyCalendar();
+    } else {
+      alert("Já está inscrito nesta sessão.");
+    }
   };
 
   // Remove session
   window.removeStudySession = function(cellKey) {
     if (confirm("Tem a certeza que deseja remover esta sessão?")) {
-      const weekKey = getCurrentWeekKey();
-      db.ref("study_sessions/" + weekKey + "/" + cellKey).remove(renderStudyCalendar);
+      const sessions = getStudySessions();
+      delete sessions[cellKey];
+      saveStudySessions(sessions);
+      renderStudyCalendar();
     }
   };
 
-  // Reset calendar (admin)
   document.addEventListener("DOMContentLoaded", function() {
+    // Reset calendar button logic
     const resetBtn = document.getElementById("reset-study-calendar-btn");
     if (resetBtn) {
       resetBtn.addEventListener("click", function() {
         const pwd = prompt("Digite a senha de admin para resetar o calendário:");
         if (pwd === "admin") {
           if (confirm("Tem certeza que deseja apagar todas as sessões de estudo desta semana?")) {
-            const weekKey = getCurrentWeekKey();
-            db.ref("study_sessions/" + weekKey).remove(renderStudyCalendar);
+            localStorage.removeItem(studyKey);
+            renderStudyCalendar();
             alert("Calendário de estudo resetado!");
           }
         } else if (pwd !== null) {
