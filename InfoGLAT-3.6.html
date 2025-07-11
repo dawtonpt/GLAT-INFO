@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="pt">
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<title>Gestão do Lazer e Animação Turística - 5º Semestre 2025-2026</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #f9f7f784;
+    --text: #1a2233;
+    --primary: #1a4d8f;
+    --secondary: #3a506b;
+    --accent: #f9c846;
+    --hover: #16396b;
+    --table-head: #f5f7fa;
+    --table-cell: #f5f7fa;
+    --table-border: #d1d9e6;
+    --event: #f9e79f;
+    --event-text: #1a4d8f;
+    --header-texture: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
+    --toast-bg: #323232;
+    --toast-color: #0a0909;
+  }
+  [data-theme="dark"] {
+    --bg: #23272f;
+    --text: #f7f9fb;
+    --primary: #90caf9;
+    --secondary: #607d8b;
+    --accent: #ffd54f;
+    --hover: #1976d2;
+    --table-head: #263238;
+    --table-cell: #37474f;
+    --table-border: #455a64;
+    --event: #ffe082;
+    --event-text: #1a2233;
+    --toast-bg: #222;
+    --toast-color: #ffd54f;
+  }
+  body {
+    font-family: 'Segoe UI', 'Inter', Arial, sans-serif;
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    transition: background 0.4s, color 0.3s;
+  }
+  .header-links {
+    background: var(--primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 24px;
+    box-shadow: 0 2px 8px #1a4d8f22;
+  }
+  .header-links a, .header-links a:visited {
+    background: transparent;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .header-links a:hover, .header-links a:focus {
+    background: var(--accent);
+    color: var(--primary);
+    outline: 2px solid var(--accent);
+  }
+  header {
+    background: linear-gradient(90deg, var(--primary) 70%, var(--accent) 100%);
+    color: #030303;
+    padding: 36px 0 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 12px #1a4d8f22;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    position: relative;
+    background-image: var(--header-texture);
+    background-repeat: repeat;
+    animation: headerFadeIn 1.2s;
+  }
+  @keyframes headerFadeIn {
+    from { opacity: 0; transform: translateY(-30px);}
+    to { opacity: 1; transform: translateY(0);}
+  }
+  header h1 {
+    font-size: 2.1em;
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  header h1 i {
+    font-size: 1.2em;
+    color: var(--accent);
+    filter: drop-shadow(0 2px 4px #0002);
+  }
+  .dark-toggle {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    background: var(--secondary);
+    color: var(--accent);
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+    z-index: 10;
+  }
+  .dark-toggle:hover, .dark-toggle:focus {
+    background: var(--accent);
+    color: var(--primary);
+    outline: 2px solid var(--primary);
+  }
+  nav {
+    background: var(--secondary);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 0;
+    box-shadow: 0 2px 8px #1a4d8f11;
+  }
+  nav button {
+    background: #fff;
+    border: none;
+    padding: 10px 18px;
+    font-size: 1rem;
+    color: var(--primary);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-weight: 500;
+    box-shadow: 0 2px 8px #1a4d8f11;
+    outline: none;
+  }
+  nav button.active,
+  nav button:hover,
+  nav button:focus {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 4px 16px #1a4d8f22;
+    transform: translateY(-2px) scale(1.04);
+    outline: 2px solid var(--accent);
+  }
+  section {
+    display: none;
+    margin: 36px auto 0 auto;
+    max-width: 900px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px #1a4d8f11;
+    padding: 32px 28px 24px 28px;
+    transition: box-shadow 0.3s, transform 0.3s, background 0.3s, color 0.3s;
+    animation: fadeInSection 0.5s;
+  }
+  section.active {
+    display: block;
+    animation: fadeInSection 0.5s;
+  }
+  @keyframes fadeInSection {
+    from { opacity: 0; transform: translateY(24px);}
+    to { opacity: 1; transform: translateY(0);}
+  }
+  .professores {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 12px;
+    justify-content: flex-start;
+  }
+  .professor {
+    background: var(--table-head);
+    border: 1px solid var(--table-border);
+    padding: 18px 14px 14px 14px;
+    border-radius: 10px;
+    width: 240px;
+    box-shadow: 0 1px 6px #1a4d8f11;
+    transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+    position: relative;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .professor:hover {
+    box-shadow: 0 4px 16px #1a4d8f22;
+    transform: translateY(-3px) scale(1.03);
+    background: var(--accent);
+  }
+  .professor .prof-icon {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    font-size: 1.5em;
+    color: var(--primary);
+    opacity: 0.18;
+    pointer-events: none;
+  }
+  .disciplina {
+    display: block;
+    margin-top: 8px;
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.05em;
+  }
+  .professor .email {
+    font-size: 0.93em;
+    color: var(--secondary);
+    margin-top: 6px;
+  }
+  .professor a {
+    margin-top: 6px;
+    color: var(--primary);
+    text-decoration: underline;
+    font-size: 0.98em;
+    transition: color 0.2s;
+  }
+  .professor a:hover, .professor a:focus {
+    color: var(--accent);
+    outline: 1px solid var(--accent);
+  }
+  /* Schedule Table */
+  .schedule-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+    background: var(--bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 8px #1a4d8f11;
+  }
+  .schedule-table th, .schedule-table td {
+    border: 1px solid var(--table-border);
+    padding: 10px;
+    text-align: center;
+    font-size: 1rem;
+    transition: background 0.2s, color 0.2s;
+  }
+  .schedule-table th {
+    background: var(--table-head);
+    color: var(--primary);
+    font-weight: bold;
+  }
+  .schedule-table td.class-cell {
+    background: var(--table-cell);
+    color: var(--secondary);
+    font-weight: bold;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+  .schedule-table td.class-cell:hover, .schedule-table td.class-cell:focus {
+    background: var(--accent);
+    color: var(--primary);
+    outline: 2px solid var(--primary);
+  }
+  .schedule-table td.empty {
+    background: var(--bg);
+  }
+  /* Calendar */
+  .calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .calendar-controls {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .calendar-controls button {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 14px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .calendar-controls button:hover, .calendar-controls button:focus {
+    background: var(--hover);
+    transform: scale(1.08);
+    outline: 2px solid var(--accent);
+  }
+  .calendar-table {
+    border-collapse: collapse;
+    background: var(--bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 8px #1a4d8f11;
+    margin-bottom: 18px;
+    font-size: 1.15rem;
+    min-width: 420px;
+    max-width: 100%;
+  }
+  .calendar-table th, .calendar-table td {
+    border: 1px solid var(--table-border);
+    width: 56px;
+    height: 56px;
+    text-align: center;
+    font-size: 1.1em;
+    transition: background 0.2s, color 0.2s;
+  }
+  .calendar-table th {
+    background: var(--table-head);
+    color: var(--primary);
+  }
+  .calendar-table td.today {
+    background: var(--primary);
+    color: #fff;
+    font-weight: bold;
+    border-radius: 50%;
+  }
+  .calendar-table td.event {
+    background: var(--event);
+    color: var(--event-text);
+    font-weight: bold;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+  }
+  .calendar-table td.event:hover::after, .calendar-table td.event:focus::after {
+    content: attr(data-event);
+    position: absolute;
+    left: 50%;
+    top: 110%;
+    transform: translateX(-50%);
+    background: var(--event);
+    color: var(--event-text);
+    padding: 6px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    font-size: 0.95em;
+    box-shadow: 0 2px 8px #0002;
+    z-index: 10;
+    opacity: 0.95;
+  }
+  /* Datas page */
+  .important-dates-list {
+    margin-top: 18px;
+    font-size: 1.08rem;
+    color: var(--primary);
+  }
+  .important-dates-list li {
+    margin-bottom: 8px;
+  }
+  .resumo-button {
+    background: var(--secondary);
+    color: #fff;
+    border: none;
+    padding: 10px 14px;
+    margin: 8px 0;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    display: block;
+    box-shadow: 0 2px 8px #1a4d8f11;
+  }
+  .resumo-button:hover, .resumo-button:focus {
+    background: var(--primary);
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px #1a4d8f22;
+    outline: 2px solid var(--accent);
+  }
+  /* Toast notification */
+  .toast {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: var(--toast-bg);
+    color: var(--toast-color);
+    padding: 14px 22px;
+    border-radius: 8px;
+    font-size: 1.05em;
+    box-shadow: 0 2px 12px #0005;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: opacity 0.4s;
+  }
+  .toast.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  /* Floating help button */
+  .fab-help {
+    position: fixed;
+    bottom: 28px;
+    left: 28px;
+    background: var(--primary);
+    color: var(--accent);
+    border: none;
+    border-radius: 50%;
+    width: 54px;
+    height: 54px;
+    font-size: 2em;
+    box-shadow: 0 4px 16px #1a4d8f44;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+  }
+  .fab-help:hover, .fab-help:focus {
+    background: var(--accent);
+    color: var(--primary);
+    transform: scale(1.08);
+    outline: 2px solid var(--primary);
+  }
+  @media (max-width: 900px) {
+    .professor {
+      width: 100%;
+    }
+    section { padding: 18px 6px; }
+    .fab-help, .toast { left: 12px; right: 12px; bottom: 12px; }
+  }
+  footer {
+    background: var(--secondary);
+    color: #ffffff;
+    text-align: center;
+    padding: 18px 0;
+    margin-top: 40px;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+  }
+  footer a {
+    color: var(--accent);
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+  footer a:hover, footer a:focus {
+    color: var(--primary);
+    outline: 1px solid var(--accent);
+  }
+</style>
+
+<!-- Firebase App (core) -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<!-- Firebase Realtime Database -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDoVZwTuwx6Cgf1V5OsBx20CB26rcdx_Ls",
+    authDomain: "mathsgame-2bcb4.firebaseapp.com",
+    databaseURL: "https://mathsgame-2bcb4-default-rtdb.firebaseio.com",
+    projectId: "mathsgame-2bcb4",
+    storageBucket: "mathsgame-2bcb4.firebasestorage.app",
+    messagingSenderId: "316993513512",
+    appId: "1:316993513512:web:bc9aee590dfa7191ecad1d",
+    measurementId: "G-CJ9MNG8F60"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+</script>
+</head>
+<body>
+<div class="header-links">
+<a href="https://www.eshte.pt" style="display:inline-block;" target="_blank">
+<img alt="ESHTE Banner" src="https://www.eshte.pt/contents/ds_subpage/banner-eshte-fundo-amarelo-1562.jpg" style="height:38px; margin-right:18px; background:transparent; border-radius:6px; box-shadow:0 2px 8px #0001;"/>
+</a>
+<a href="https://moodle.eshte.pt/moodle/" target="_blank">Moodle</a>
+<a href="https://dif.eshte.pt/" target="_blank">Académicos</a>
+<a href="https://outlook.office365.com/" target="_blank">E-mail</a>
+</div>
+<header>
+<h1>Gestão do Lazer e Animação Turística<br/>5º Semestre 2025-2026 (Pós Laboral)</h1>
+</header>
+<nav>
+<button class="tab-btn active" data-tab="calendario"><i class="fas fa-calendar-alt"></i> Calendário</button>
+<button class="tab-btn" data-tab="datas"><i class="fas fa-flag"></i> Datas</button>
+<button class="tab-btn" data-tab="horario"><i class="fas fa-clock"></i> Horário</button>
+<button class="tab-btn" data-tab="unidades"><i class="fas fa-chalkboard-teacher"></i> Unidades Curriculares</button>
+<button class="tab-btn" data-tab="resumos"><i class="fas fa-file-alt"></i> Resumos</button>
+<button class="tab-btn" data-tab="estudo"><i class="fas fa-users"></i> Estudo em Grupo</button>
+<button class="tab-btn" data-tab="anuncios"><i class="fas fa-bullhorn"></i> Anúncios</button>
+</nav>
+<section class="active" id="calendario">
+<div id="calendar-warning" style="background: #fff176; color: #d32f2f; border-radius: 8px; padding: 14px 18px; margin-bottom: 22px; font-weight: bold; font-size: 1.15em; box-shadow: 0 2px 8px #d32f2f22;">
+      Carregando informação do próximo evento...
+    </div>
+<div class="calendar-container">
+<div class="calendar-controls">
+<button id="prevMonth">&lt;</button>
+<span id="calendarMonth"></span>
+<button id="nextMonth">&gt;</button>
+</div>
+<table class="calendar-table" id="calendarTable"></table>
+<div style="margin-top:10px; color:var(--secondary); font-size:1.05em;">
+<i class="fas fa-star" style="color:var(--event);"></i> Datas importantes estão destacadas!
+      </div>
+</div>
+</section>
+<section id="datas">
+<h2>Datas Importantes</h2>
+<ul class="important-dates-list">
+<li><strong>15 de Setembro 2025:</strong> Início das aulas</li>
+<li><strong>10 de Outubro 2025:</strong> Entrega do 1º trabalho de Gestão de Eventos</li>
+<li><strong>22 de Dezembro 2025:</strong> Início das férias de Natal</li>
+<li><strong>2 de Janeiro 2026:</strong> Fim das férias de Natal</li>
+<li><strong>12 de Janeiro 2026:</strong> Início dos exames</li>
+<li><strong>23 de Janeiro 2026:</strong> Fim dos exames</li>
+<li><strong>6 de Fevereiro 2026:</strong> Fim do semestre</li>
+<li><strong>20 de Novembro 2025:</strong> Seminário Temático Especial</li>
+<li><strong>5 de Dezembro 2025:</strong> Visita de Estudo a Sintra</li>
+</ul>
+</section>
+<section id="horario">
+<h2>Horário Semanal</h2>
+<table class="schedule-table">
+<tr>
+<th>Hora</th>
+<th>Segunda</th>
+<th>Terça</th>
+<th>Quarta</th>
+<th>Quinta</th>
+<th>Sexta</th>
+</tr>
+<tr>
+<th>18:00 - 19:00</th>
+<td class="class-cell">Animação e Eventos em Empreendimentos Turísticos</td>
+<td class="class-cell">Gestão do Risco</td>
+<td class="class-cell">Gestão e Programação Culturais</td>
+<td class="class-cell">Organização de Eventos</td>
+<td class="class-cell">Marketing</td>
+</tr>
+<tr>
+<th>19:00 - 20:00</th>
+<td class="class-cell">Inglês V</td>
+<td class="class-cell">Gestão do Risco</td>
+<td class="class-cell">Gestão e Programação Culturais</td>
+<td class="class-cell">Organização de Eventos</td>
+<td class="class-cell">Marketing</td>
+</tr>
+<tr>
+<th>20:00 - 21:00</th>
+<td class="class-cell">Inglês V</td>
+<td class="empty"></td>
+<td class="class-cell">Gestão e Programação Culturais</td>
+<td class="class-cell">Organização de Eventos</td>
+<td class="empty"></td>
+</tr>
+<tr>
+<th>21:00 - 22:00</th>
+<td class="empty"></td>
+<td class="empty"></td>
+<td class="empty"></td>
+<td class="class-cell">Organização de Eventos</td>
+<td class="empty"></td>
+</tr>
+</table>
+</section>
+<section id="unidades">
+<h2>Unidades Curriculares</h2>
+<div class="professores">
+  <div class="professor">
+    <strong>Prof. Mário Silva</strong>
+    <span class="disciplina">Animação e Eventos em Empreendimentos Turísticos</span>
+    <div class="email">Mario.silva@eshte.pt</div>
+   <a href="https://dif.eshte.pt/netpa/doc?stage=FichaUnidadeCurricular&_event=publicacaoFUC&codeDiscip=1000003&anoLectivo=202425&modeloId=false&codInstituic=1&codePeriodo=&codeCurso=9163&codePlano=null&codeRamo=null&docIsAttachment=false&popup_mode=true&publica=false" target="_blank" style="color:var(--primary);text-decoration:underline;font-size:0.98em;">FUC</a>
+  </div>
+  <div class="professor">
+    <strong>Prof. Verónica Dias</strong>
+    <span class="disciplina">Gestão do Risco</span>
+    <div class="email">Veronica.dias@eshte.pt</div>
+    <a href="https://dif.eshte.pt/netpa/doc?stage=FichaUnidadeCurricular&_event=publicacaoFUC&codeDiscip=1000056&anoLectivo=202425&modeloId=false&codInstituic=1&codePeriodo=&codeCurso=9163&codePlano=null&codeRamo=null&docIsAttachment=false&popup_mode=true&publica=false" target="_blank" style="color:var(--primary);text-decoration:underline;font-size:0.98em;">FUC</a>
+  </div>
+  <div class="professor">
+    <strong>Prof. Ana Gonçalves</strong>
+    <span class="disciplina">Gestão e Programação Culturais</span>
+    <div class="email">Ana.gonçalves@eshte.pt</div>
+    <a href="https://dif.eshte.pt/netpa/doc?stage=FichaUnidadeCurricular&_event=publicacaoFUC&codeDiscip=1000057&anoLectivo=202425&modeloId=false&codInstituic=1&codePeriodo=&codeCurso=9163&codePlano=null&codeRamo=null&docIsAttachment=false&popup_mode=true&publica=false" target="_blank" style="color:var(--primary);text-decoration:underline;font-size:0.98em;">FUC</a>
+  </div>
+  <div class="professor">
+    <strong>Prof. Susana Gonçalves</strong>
+    <span class="disciplina">Organização de Eventos</span>
+    <div class="email">Susana.gonçalves@eshte.pt</div>
+    <a href="https://dif.eshte.pt/netpa/doc?stage=FichaUnidadeCurricular&_event=publicacaoFUC&codeDiscip=1000165&anoLectivo=202425&modeloId=false&codInstituic=1&codePeriodo=&codeCurso=9163&codePlano=null&codeRamo=null&docIsAttachment=false&popup_mode=true&publica=false" target="_blank" style="color:var(--primary);text-decoration:underline;font-size:0.98em;">FUC</a>
+  </div>
+  <div class="professor">
+    <strong>Prof. Victor Afonso</strong>
+    <span class="disciplina">Marketing</span>
+    <div class="email">Victor.afonso@eshte.pt</div>
+    <a href="https://dif.eshte.pt/netpa/doc?stage=FichaUnidadeCurricular&_event=publicacaoFUC&codeDiscip=1000151&anoLectivo=202425&modeloId=false&codInstituic=1&codePeriodo=&codeCurso=9163&codePlano=null&codeRamo=null&docIsAttachment=false&popup_mode=true&publica=false" target="_blank" style="color:var(--primary);text-decoration:underline;font-size:0.98em;">FUC</a>
+  </div>
+  <div class="professor">
+    <strong>Prof.Paula Silva</strong>
+    <span class="disciplina">Inglês V</span>
+    <div class="email">Paula.silva@eshte.pt</div>
+    <a href="https://dif.eshte.pt/netpa/doc?stage=FichaUnidadeCurricular&_event=publicacaoFUC&codeDiscip=1000124&anoLectivo=202425&modeloId=false&codInstituic=1&codePeriodo=&codeCurso=9163&codePlano=null&codeRamo=null&docIsAttachment=false&popup_mode=true&publica=false" target="_blank" style="color:var(--primary);text-decoration:underline;font-size:0.98em;">FUC</a>
+  </div>
+    <button style= "color:#000000; background:#bdb6b6; font-weight:bolder; font-size:1.5em; position:absolute; top:790px; left:320px; cursor:pointer; "><a href="https://www.eshte.pt/pt/artigos/fuc-glat-e-glatpl" style="color:#000000">Todas as Fichas de Unidade Curricular do Curso</a></button>
+</div>
+</section>
+<section id="resumos">
+<h2>Resumos das Disciplinas</h2>
+<button class="resumo-button" onclick="window.open('#')">Animação e Eventos em Empreendimentos Turísticos</button>
+<button class="resumo-button" onclick="window.open('#')">Gestão do Risco</button>
+<button class="resumo-button" onclick="window.open('#')">Gestão e Programação Culturais</button>
+<button class="resumo-button" onclick="window.open('#')">Organização de Eventos</button>
+<button class="resumo-button" onclick="window.open('#')">Marketing</button>
+<button class="resumo-button" onclick="window.open('#')">Inglês V</button>
+<!-- Silly shared summaries button -->
+<button class="resumo-button" style="margin-top:18px; background:#ffe082; color:#d32f2f; font-weight:bold; font-size:1.08em; border:2px dashed #d32f2f; box-shadow:0 2px 8px #d32f2f22; cursor:pointer;"
+  onclick="window.open('https://eshtept-my.sharepoint.com/my?id=%2Fpersonal%2F14787_eshte_pt%2FDocuments%2FResumos%20partilhados&ga=1','_blank')">
+  🤪 Resumos partilhados
+</button>
+</section>
+<section id="anuncios">
+  <h2>Anúncios</h2>
+  <form id="anuncio-form" style="margin-bottom: 20px;">
+    <textarea id="anuncio-text" placeholder="Escreva o seu anúncio aqui..." rows="4" style="width:100%; padding:10px; border-radius:6px; border:1px solid #ccc;"></textarea>
+    <button type="submit" style="margin-top: 10px; background: var(--primary); color: #fff; border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer;">Publicar</button>
+  </form>
+  <div id="anuncios-list"></div>
+</section>
+
+<section id="estudo">
+<h2>Estudo em Grupo - Calendário Semanal</h2>
+<div style="margin-bottom:12px; color:var(--primary); font-weight:bold;">
+      Adicione sessões de estudo e participe com colegas!
+    </div>
+<button id="reset-study-calendar-btn" style="margin:18px 0 10px 0; background:var(--primary); color:#fff; border:none; border-radius:6px; padding:8px 18px; font-weight:bold; cursor:pointer;">
+      Resetar Calendário (Admin)
+    </button>
+<div id="study-calendar-container"></div>
+</section>
+<script>
+    // Tabs
+    const buttons = document.querySelectorAll('.tab-btn');
+    const sections = document.querySelectorAll('section');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        sections.forEach(s => s.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Calendar events (dates in yyyy-mm-dd)
+    const calendarEvents = {
+      "2025-09-15": "Início das aulas",
+      "2025-10-10": "Entrega do 1º trabalho de Gestão de Eventos",
+      "2025-11-20": "Seminário Temático Especial",
+      "2025-12-22": "Férias de Natal",
+      "2025-12-05": "Visita de Estudo a Sintra",
+      "2026-01-02": "Fim das férias de Natal",
+      "2026-01-12": "Início dos exames",
+      "2026-01-23": "Fim dos exames",
+      "2026-02-06": "Fim do semestre",
+      "2025-11-26": "Meu aniversário",
+    };
+
+    const monthNames = [
+      "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+      "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+    ];
+    const weekDays = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+
+    // Show current month and year by default
+    let today = new Date();
+    let currentMonth = today.getMonth();
+    let currentYear = today.getFullYear();
+
+    function renderCalendar(month, year) {
+      const calendarTable = document.getElementById('calendarTable');
+      const calendarMonth = document.getElementById('calendarMonth');
+      calendarMonth.textContent = `${monthNames[month]} ${year}`;
+
+      // First day and days in month
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      // Today
+      const isCurrentMonth = today.getMonth() === month && today.getFullYear() === year;
+
+      // Build header
+      let html = "<tr>";
+      for (let d = 0; d < 7; d++) {
+        html += `<th>${weekDays[d]}</th>`;
+      }
+      html += "</tr><tr>";
+
+      // Fill empty cells before first day
+      for (let i = 0; i < firstDay; i++) {
+        html += "<td></td>";
+      }
+
+      // Fill days
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        let classes = "";
+        let tooltip = "";
+        let dataEvent = "";
+
+        if (calendarEvents[dateStr]) {
+          classes += " event";
+          tooltip = ` title="${calendarEvents[dateStr]}"`;
+          dataEvent = ` data-event="${calendarEvents[dateStr]}"`;
+        }
+        if (isCurrentMonth && day === today.getDate()) {
+          classes += " today";
+        }
+
+        html += `<td class="${classes.trim()}"${tooltip}${dataEvent}>${day}</td>`;
+
+        // New row after Saturday
+        if ((firstDay + day) % 7 === 0 && day !== daysInMonth) {
+          html += "</tr><tr>";
+        }
+      }
+
+      // Fill empty cells after last day
+      const lastDay = (firstDay + daysInMonth) % 7;
+      if (lastDay !== 0) {
+        for (let i = lastDay; i < 7; i++) {
+          html += "<td></td>";
+        }
+      }
+      html += "</tr>";
+      calendarTable.innerHTML = html;
+    }
+
+    document.getElementById('prevMonth').onclick = function () {
+      currentMonth--;
+      if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+      }
+      renderCalendar(currentMonth, currentYear);
+    };
+    document.getElementById('nextMonth').onclick = function () {
+      currentMonth++;
+      if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+      }
+      renderCalendar(currentMonth, currentYear);
+    };
+
+    renderCalendar(currentMonth, currentYear);
+  </script>
+<script>
+  // Exemplo: lista de eventos no formato {date: 'YYYY-MM-DD', name: 'Nome do Evento'}
+  const eventos = [
+    { date: '2025-09-15', name: 'Início das aulas' },
+    { date: '2025-10-10', name: 'Entrega de trabalho' },
+    { date: '2025-11-05', name: 'Prova escrita' }
+    // Adicione mais eventos conforme necessário
+  ];
+
+  function diasParaProximoEvento() {
+    const hoje = new Date();
+    let menorDiferenca = Infinity;
+    let proximoEvento = null;
+
+    eventos.forEach(ev => {
+      const dataEvento = new Date(ev.date + 'T00:00:00');
+      const diff = Math.ceil((dataEvento - hoje) / (1000 * 60 * 60 * 24));
+      if (diff >= 0 && diff < menorDiferenca) {
+        menorDiferenca = diff;
+        proximoEvento = ev;
+      }
+    });
+
+    return proximoEvento
+      ? { dias: menorDiferenca, nome: proximoEvento.name }
+      : null;
+  }
+
+  function atualizarAvisoCalendario() {
+    const aviso = document.getElementById('calendar-warning');
+    const proximo = diasParaProximoEvento();
+    if (proximo) {
+      aviso.textContent = `${proximo.dias} dia${proximo.dias === 1 ? '' : 's'} para "${proximo.nome}"`;
+    } else {
+      aviso.textContent = 'Nenhum evento futuro encontrado.';
+    }
+  }
+
+  atualizarAvisoCalendario();
+</script>
+<footer style="background: var(--secondary); color: #fff; text-align: center; padding: 18px 0; margin-top: 40px; font-size: 1rem;">
+<div><em>webdesign by Dawton</em></div>
+<div>Qualquer dúvida ou pedido contactar <a href="mailto:Dawton@glat.site" style="color: #ffe082; text-decoration: underline;">Dawton@glat.site</a></div>
+</footer>
+<script>
+  // Tab switching logic
+  document.addEventListener("DOMContentLoaded", function() {
+    const buttons = document.querySelectorAll('.tab-btn');
+    const sections = document.querySelectorAll('section');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        sections.forEach(s => s.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+        // Render calendar if estudo tab is activated
+        if (btn.dataset.tab === "estudo") renderStudyCalendar();
+      });
+    });
+
+    // Render calendar if tab is active on load
+    if (document.getElementById("estudo").classList.contains("active")) {
+      renderStudyCalendar();
+    }
+    // Form submit for study session
+    document.body.addEventListener("submit", function(e) {
+      if (e.target && e.target.id === "study-session-form") {
+        e.preventDefault();
+        const cellKey = document.getElementById("study-session-form-modal").dataset.cellKey;
+        const title = document.getElementById("study-title").value.trim();
+        const desc = document.getElementById("study-desc").value.trim();
+        const name = document.getElementById("study-name").value.trim() || "Anónimo";
+        if (!title || !name) return;
+        const sessions = getStudySessions();
+        sessions[cellKey] = {
+          title,
+          desc,
+          participants: [name]
+        };
+        saveStudySessions(sessions);
+        closeStudySessionForm();
+        renderStudyCalendar();
+      }
+    });
+  });
+
+  // Study calendar config
+  const studyHours = ["14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"];
+  const studyDays = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
+  const studyDbPath = "studySessions";
+
+  // Get all sessions (real-time)
+  function getStudySessions(callback) {
+    db.ref(studyDbPath).on('value', snapshot => {
+      callback(snapshot.val() || {});
+    });
+  }
+
+  // Save all sessions (overwrite)
+  function saveStudySessions(sessions) {
+    db.ref(studyDbPath).set(sessions);
+  }
+
+  // Render the study calendar
+  function renderStudyCalendar() {
+    getStudySessions(function(sessions) {
+      let html = `<table class="schedule-table" style="margin-bottom:0;">
+        <tr>
+          <th>Hora</th>
+          ${studyDays.map(d=>`<th>${d}</th>`).join('')}
+        </tr>`;
+      for (let h = 0; h < studyHours.length; h++) {
+        const hourStart = studyHours[h];
+        const hourEnd = (parseInt(studyHours[h]) + 1) + ":00";
+        html += `<tr><th>${hourStart} - ${hourEnd}</th>`;
+        for (let d = 0; d < studyDays.length; d++) {
+          const cellKey = `${d}-${h}`;
+          const cell = sessions[cellKey];
+          html += `<td style="vertical-align:top; min-width:120px;">`;
+          if (cell) {
+            html += `<div style="font-weight:bold; color:var(--primary); margin-bottom:4px;">${cell.title}</div>
+              <div style="font-size:0.95em; margin-bottom:4px;">${cell.desc || ""}</div>
+              <div style="font-size:0.93em; margin-bottom:4px; color:var(--secondary);">
+                Participantes: ${cell.participants && cell.participants.length ? cell.participants.join(", ") : "Nenhum"}
+              </div>
+              <button onclick="joinStudySession('${cellKey}')" style="background:var(--primary);color:#fff;border:none;border-radius:5px;padding:4px 10px;cursor:pointer;margin-bottom:3px;">Participar</button>
+              <button onclick="removeStudySession('${cellKey}')" style="background:var(--secondary);color:#fff;border:none;border-radius:5px;padding:4px 10px;cursor:pointer;">Remover</button>
+            `;
+          } else {
+            html += `<button onclick="showAddStudySession('${cellKey}')" style="background:var(--event);color:var(--primary);border:none;border-radius:5px;padding:4px 10px;cursor:pointer;">+ Adicionar</button>`;
+          }
+          html += `</td>`;
+        }
+        html += `</tr>`;
+      }
+      html += `</table>
+      <div id="study-session-form-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0007;z-index:1000;align-items:center;justify-content:center;">
+        <form id="study-session-form" style="background:#fff;padding:22px 28px;border-radius:10px;box-shadow:0 4px 24px #0003;max-width:340px;width:90vw;display:flex;flex-direction:column;gap:10px;">
+          <h3 style="color:var(--primary);margin:0 0 8px 0;">Nova Sessão de Estudo</h3>
+          <input type="text" id="study-title" placeholder="Título da sessão" maxlength="32" required style="padding:6px 8px;border-radius:5px;border:1px solid #ccc;">
+          <input type="text" id="study-desc" placeholder="Descrição (opcional)" maxlength="64" style="padding:6px 8px;border-radius:5px;border:1px solid #ccc;">
+          <input type="text" id="study-name" placeholder="Seu nome" maxlength="16" required style="padding:6px 8px;border-radius:5px;border:1px solid #ccc;">
+          <div style="display:flex;gap:8px;justify-content:flex-end;">
+            <button type="button" onclick="closeStudySessionForm()" style="background:var(--secondary);color:#fff;border:none;border-radius:5px;padding:4px 14px;cursor:pointer;">Cancelar</button>
+            <button type="submit" style="background:var(--primary);color:#fff;border:none;border-radius:5px;padding:4px 14px;cursor:pointer;">Adicionar</button>
+          </div>
+        </form>
+      </div>
+      `;
+      const container = document.getElementById("study-calendar-container");
+      if (container) container.innerHTML = html;
+      document.getElementById("study-session-form-modal").style.display = "none";
+    });
+  }
+
+  // Modal logic
+  window.showAddStudySession = function(cellKey) {
+    const modal = document.getElementById("study-session-form-modal");
+    modal.style.display = "flex";
+    modal.dataset.cellKey = cellKey;
+    document.getElementById("study-title").value = "";
+    document.getElementById("study-desc").value = "";
+    document.getElementById("study-name").value = "";
+  };
+  window.closeStudySessionForm = function() {
+    document.getElementById("study-session-form-modal").style.display = "none";
+  };
+
+  // Join session
+  window.joinStudySession = function(cellKey) {
+    const name = prompt("Digite o seu nome para participar:", "");
+    if (!name) return;
+    db.ref(studyDbPath).once('value').then(snapshot => {
+      const sessions = snapshot.val() || {};
+      if (!sessions[cellKey]) return;
+      if (!sessions[cellKey].participants) sessions[cellKey].participants = [];
+      if (!sessions[cellKey].participants.includes(name)) {
+        sessions[cellKey].participants.push(name);
+        saveStudySessions(sessions);
+      } else {
+        alert("Já está inscrito nesta sessão.");
+      }
+    });
+  };
+
+  // Remove session
+  window.removeStudySession = function(cellKey) {
+    if (confirm("Tem a certeza que deseja remover esta sessão?")) {
+      db.ref(studyDbPath).once('value').then(snapshot => {
+        const sessions = snapshot.val() || {};
+        delete sessions[cellKey];
+        saveStudySessions(sessions);
+      });
+    }
+  };
+
+  // Handle form submit for new session
+  document.body.addEventListener("submit", function(e) {
+    if (e.target && e.target.id === "study-session-form") {
+      e.preventDefault();
+      const cellKey = document.getElementById("study-session-form-modal").dataset.cellKey;
+      const title = document.getElementById("study-title").value.trim();
+      const desc = document.getElementById("study-desc").value.trim();
+      const name = document.getElementById("study-name").value.trim() || "Anónimo";
+      if (!title || !name) return;
+      db.ref(studyDbPath).once('value').then(snapshot => {
+        const sessions = snapshot.val() || {};
+        sessions[cellKey] = {
+          title,
+          desc,
+          participants: [name]
+        };
+        saveStudySessions(sessions);
+        closeStudySessionForm();
+      });
+    }
+  });
+
+  // Reset calendar button logic
+  document.addEventListener("DOMContentLoaded", function() {
+    const resetBtn = document.getElementById("reset-study-calendar-btn");
+    if (resetBtn) {
+      resetBtn.addEventListener("click", function() {
+        const pwd = prompt("Digite a senha de admin para resetar o calendário:");
+        if (pwd === "admin") {
+          if (confirm("Tem certeza que deseja apagar todas as sessões de estudo desta semana?")) {
+            db.ref(studyDbPath).set({});
+            alert("Calendário de estudo resetado!");
+          }
+        } else if (pwd !== null) {
+          alert("Senha incorreta.");
+        }
+      });
+    }
+  });
+</script>
+
+
+<script>
+  const anunciosPath = "anuncios";
+
+  document.getElementById("anuncio-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const text = document.getElementById("anuncio-text").value.trim();
+    if (!text) return;
+    const newAnuncio = {
+      mensagem: text,
+      timestamp: Date.now()
+    };
+    db.ref(anunciosPath).push(newAnuncio);
+    document.getElementById("anuncio-text").value = "";
+  });
+
+  function carregarAnuncios() {
+    db.ref(anunciosPath).on("value", snapshot => {
+      const container = document.getElementById("anuncios-list");
+      const anuncios = snapshot.val() || {};
+      const mensagens = Object.values(anuncios)
+        .sort((a, b) => b.timestamp - a.timestamp)
+        .map((anuncio, index) => {
+          const data = new Date(anuncio.timestamp);
+          const destaque = index === 0 ? "background:#fff8e1; border:2px solid var(--primary);" : "background:#f9f9f9;";
+          return `<div style="border-radius:8px; padding:10px; margin-bottom:10px; ${destaque}">
+            <div style="font-size:0.9em; color:var(--secondary);">${data.toLocaleString()}</div>
+            <div style="font-size:1.05em; margin-top:6px;">${anuncio.mensagem}</div>
+          </div>`;
+        }).join("");
+      container.innerHTML = mensagens;
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", carregarAnuncios);
+</script>
+
+
+</body>
+</html>
