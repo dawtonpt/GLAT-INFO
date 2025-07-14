@@ -754,6 +754,7 @@
             addTodoBtn.addEventListener('click', addTodo);
             newTodoInput.addEventListener('keydown', e => e.key === 'Enter' && (e.preventDefault(), addTodo()));     
             newTodoDueDate.addEventListener('keydown', e => e.key === 'Enter' && (e.preventDefault(), addTodo()));     loadTasks();
+loadNotes();
 
             addNoteBtn.addEventListener('click', () => {
                 const newNote = {
