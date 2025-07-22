@@ -764,12 +764,12 @@
     let menorDiferenca = Infinity;
     let proximoEvento = null;
 
-    eventos.forEach(ev => {
-      const dataEvento = new Date(ev.date + 'T00:00:00');
+    Object.entries(calendarEvents).forEach(([date, name]) => {
+      const dataEvento = new Date(date + 'T00:00:00');
       const diff = Math.ceil((dataEvento - hoje) / (1000 * 60 * 60 * 24));
       if (diff >= 0 && diff < menorDiferenca) {
         menorDiferenca = diff;
-        proximoEvento = ev;
+        proximoEvento = { date, name };
       }
     });
 
@@ -788,7 +788,12 @@
     }
   }
 
+  // Atualiza o aviso ao carregar e sempre que calendarEvents mudar
   atualizarAvisoCalendario();
+
+  // Exemplo: se adicionar/remover eventos dinamicamente, chame isto:
+  // calendarEvents["2025-10-10"] = "Novo Evento";
+  // atualizarAvisoCalendario();
 </script>
 <footer style="background: var(--secondary); color: #fff; text-align: center; padding: 18px 0; margin-top: 40px; font-size: 1rem;">
 <div>Qualquer dúvida ou pedido contactar <a href="mailto:Dawton@glat.site" style="color: #ffe082; text-decoration: underline;">Dawton@glat.site</a></div>
