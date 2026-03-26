@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vai na Volta - Encontro entre Culturas</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+
+        :root {
+            --azul-inst: #005293;
+            --vermelho-destaque: #d92534;
+            --texto-escuro: #2c3e50;
+            --texto-cinza: #4a5568;
+            --fundo-claro: #f8f9fa;
+            --branco: #ffffff;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            line-height: 1.6;
+            color: var(--texto-escuro);
+            background-color: var(--fundo-claro);
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: var(--branco);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-logo img {
+            height: 60px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--azul-inst);
+            font-weight: 600;
+            margin-left: 30px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--vermelho-destaque);
+        }
+
+        .hero {
+            position: relative;
+            background-image: url("moodboarddvainavolta.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: var(--branco);
+            text-align: center;
+            padding: 100px 20px;
+            z-index: 1;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(135deg, rgba(0, 82, 147, 0.7) 0%, rgba(0, 56, 101, 0.7) 100%);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            margin-bottom: 10px;
+        }
+        .hero p.subtitle {
+            font-size: 1.4em;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            font-weight: 300;
+        }
+        .hero-info {
+            background: rgba(255, 255, 255, 0.2);
+            display: inline-block;
+            padding: 20px 40px;
+            border-radius: 8px;
+            border-left: 4px solid var(--vermelho-destaque);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        h2.section-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--azul-inst);
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .programa-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .programa-card {
+            background: var(--branco);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--azul-inst);
+        }
+        .programa-card h3 {
+            color: var(--vermelho-destaque);
+            margin-top: 0;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        .programa-card ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .programa-card li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        .programa-card li:last-child {
+            border-bottom: none;
+        }
+
+        .culturas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        .cultura-item {
+            background: var(--branco);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .cultura-item:hover {
+            transform: translateY(-5px);
+        }
+        .cultura-item img {
+            height: 60px;
+            margin-bottom: 15px;
+        }
+        .cultura-item span {
+            display: block;
+            font-weight: 600;
+            color: var(--azul-inst);
+        }
+
+        footer {
+            background-color: var(--branco);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+        }
+        .parceiros-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+        .parceiros-grid img {
+            max-height: 50px;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+        .parceiros-grid img:hover {
+            filter: grayscale(0%);
+        }
+        .footer-contato {
+            color: var(--texto-cinza);
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">
+            <img src="https://i.ibb.co/DPW3w63P/image.png" alt="Logótipo Vai na Volta">
+        </div>
+        <div class="nav-links">
+            <a href="index.html" style="color: var(--vermelho-destaque);">Início</a>
+            <a href="quem-somos.html">Quem Somos</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="inicio">
+        <h1>Vai na Volta</h1>
+        <p class="subtitle">Um encontro entre culturas. Experiências únicas através da gastronomia, música, dança e tradições.</p>
+        <div class="hero-info">
+            <strong>16 de Maio de 2026</strong> | 15h00 - 19h00 <br>
+            Recinto do Mercado de Carcavelos
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">O Programa</h2>
+        <div class="programa-grid">
+            <div class="programa-card">
+                <h3>Palco Principal</h3>
+                <ul>
+                    <li>Cerimónia de abertura do Evento</li>
+                    <li>Outras danças a confirmar</li>
+                    <li>Samba (Brasil)</li>
+                    <li>Zumba (Colômbia)</li>
+                    <li>Sevilhanas (Espanha)</li>
+                    <li>Yoga (Índia)</li>
+                    <li>Cerimónia de encerramento do Evento</li>
+                </ul>
+            </div>
+            <div class="programa-card">
+                <h3>Bancas (15h00 - 19h00)</h3>
+                <ul>
+                    <li><strong>Guiné:</strong> Comida</li>
+                    <li><strong>Índia:</strong> Yoga - exposição & aula (1h)</li>
+                    <li><strong>Equador:</strong> Showcooking e Artesanato</li>
+                    <li><strong>Panamá:</strong> Showcooking e Artesanato</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" style="background-color: var(--fundo-claro);">
+        <h2 class="section-title">Culturas Presentes</h2>
+        <div class="culturas-grid">
+            <div class="cultura-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_Guinea-Bissau.svg" alt="Guiné-Bissau">
+                <span>Guiné-Bissau</span>
+            </div>
+            <div class="cultura-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_India.svg/250px-Flag_of_India.svg.png" alt="Índia">
+                <span>Índia</span>
+            </div>
+            <div class="cultura-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Flag_of_Ecuador.svg/1280px-Flag_of_Ecuador.svg.png" alt="Equador">
+                <span>Equador</span>
+            </div>
+            <div class="cultura-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/250px-Flag_of_Brazil.svg.png" alt="Brasil">
+                <span>Brasil</span>
+            </div>
+            <div class="cultura-item">
+                <img src="https://www.embaixadadopanama.pt/Images/panama_flag_02.jpg" alt="Panamá">
+                <span>Panamá</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" style="text-align: center;">
+        <h2 class="section-title">Localização do Evento</h2>
+        <p style="color: var(--texto-cinza); margin-bottom: 30px;">Recinto do Mercado de Carcavelos</p>
+        <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--azul-inst);">
+            <iframe 
+                width="100%" 
+                height="400" 
+                frameborder="0" 
+                scrolling="no" 
+                marginheight="0" 
+                marginwidth="0" 
+                src="https://maps.google.com/maps?q=38.68855289643894,-9.33203742919582&hl=pt-PT&z=16&output=embed"
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <footer>
+        <div class="parceiros-grid">
+            <img src="https://uf-carcavelosparede.pt/wp-content/themes/UFCP/images/header/logo.png" alt="UFCP">
+            <img src="https://www.panaembabrasil.com.br/wp-content/uploads/2016/06/escudo-blanco-negro-jpg1-e1466014490116.jpg" alt="Embaixada do Panamá">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVhQlk1meP6oKsXYTUarD4eEhkZk7hb18gOg&s" alt="Damas Equatorianas">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf3gJGW-gtndJWc_KXOYSQQkmqQZBhWZUP8Q&s" alt="Saltaricos do Castelo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_nAgLHXIGB7xQqwg11xYGchIc2ZNKd_SZkQ&s" alt="Comunidade Hindu">
+            <img src="https://i.ibb.co/N2hPNVrH/image.png" alt="Império Dantas">
+        </div>
+        <div class="footer-contato">
+            <p>Contacto: evento@vainavolta.site</p>
+            <p>&copy; 2026 Vai na Volta. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
