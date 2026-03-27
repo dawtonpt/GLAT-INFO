@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quem Somos - Vai na Volta</title>
+    
+    <title>Quem Somos | Equipa Vai na Volta - Cascais 2026</title>
+    <meta name="description" content="Conheça a equipa e a inspiração por trás do evento Vai na Volta. Estudantes e organizadores unidos para criar um encontro intercultural inesquecível em Carcavelos.">
+    <meta name="keywords" content="Equipa Vai na Volta, organização eventos Cascais, encontro de culturas, quem somos, evento cultural Carcavelos">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Source+Sans+Pro:wght@300;400;600&display=swap');
 
@@ -150,60 +154,139 @@
             color: var(--texto-cinza);
             font-size: 0.9em;
         }
+        .social-links {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .social-links a svg {
+            fill: var(--texto-cinza);
+            transition: fill 0.3s, transform 0.3s;
+        }
+        .social-links a:hover svg {
+            fill: var(--azul-inst);
+            transform: translateY(-3px);
+        }
+
+        /* Classes de Acessibilidade Adicionadas */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--vermelho-destaque);
+            color: white;
+            padding: 8px;
+            z-index: 1000;
+            transition: top 0.3s;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+        :focus-visible {
+            outline: 3px solid var(--vermelho-destaque);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+        .btn-audio {
+            cursor: pointer;
+            background: var(--fundo-claro);
+            border: 1px solid var(--azul-inst);
+            padding: 5px 12px;
+            border-radius: 20px;
+            color: var(--azul-inst);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+            font-size: 0.9em;
+        }
+        .btn-audio:hover {
+            background-color: var(--azul-inst);
+            color: var(--branco);
+        }
     </style>
 </head>
 <body>
 
-    <nav>
+    <a href="#conteudo-principal" class="skip-link">Saltar para o conteúdo principal</a>
+
+    <nav aria-label="Navegação Principal">
         <div class="nav-logo">
             <img src="https://i.ibb.co/DPW3w63P/image.png" alt="Logótipo Vai na Volta">
         </div>
         <div class="nav-links">
-            <a href="index.html">Início</a>
-            <a href="quem-somos.html" style="color: var(--vermelho-destaque);">Quem Somos</a>
+            <a href="index.html" data-i18n="nav-inicio">Início</a>
+            <a href="quem-somos.html" style="color: var(--vermelho-destaque);" data-i18n="nav-quem-somos" aria-current="page">Quem Somos</a>
+        </div>
+        <div class="lang-toggles" style="margin-left: auto; display: flex; gap: 10px; align-items: center;">
+            <button onclick="toggleSpeech()" class="btn-audio" aria-label="Ouvir conteúdo da página" id="btn-tts">
+                🔊 <span data-i18n="btn-ouvir">Ouvir</span>
+            </button>
+            <button onclick="changeLang('pt')" aria-label="Mudar para Português" style="cursor:pointer; background:none; border:1px solid var(--azul-inst); padding:5px 10px; border-radius:4px; color:var(--azul-inst); font-weight:bold;">PT</button>
+            <button onclick="changeLang('en')" aria-label="Switch to English" style="cursor:pointer; background:none; border:1px solid #e2e8f0; padding:5px 10px; border-radius:4px; color:var(--texto-cinza);">EN</button>
+            <button onclick="changeLang('es')" aria-label="Cambiar a Español" style="cursor:pointer; background:none; border:1px solid #e2e8f0; padding:5px 10px; border-radius:4px; color:var(--texto-cinza);">ES</button>
         </div>
     </nav>
 
-    <div class="page-header">
-        <h1>Quem Somos</h1>
-        <p>A equipa e a inspiração por trás do Vai na Volta.</p>
-    </div>
+    <div id="aria-live-region" aria-live="polite" class="sr-only"></div>
 
-    <section class="container">
-        <h2 class="section-title">A Equipa</h2>
-        <div class="equipa-grid">
-            <div class="membro-card">
-                <img src="https://via.placeholder.com/150" alt="Daniel Lucena" class="membro-img">
-                <h3>Daniel Lucena</h3>
-                <p>Texto de apresentação a inserir posteriormente. Aqui podes falar sobre o papel no evento e a experiência académica.</p>
-            </div>
-            <div class="membro-card">
-                <img src="https://via.placeholder.com/150" alt="Dawton Pessanha" class="membro-img">
-                <h3>Dawton Pessanha</h3>
-                <p>Texto de apresentação a inserir posteriormente. Aqui podes falar sobre o papel no evento e a experiência académica.</p>
-            </div>
-            <div class="membro-card">
-                <img src="https://via.placeholder.com/150" alt="Mariana Augusto" class="membro-img">
-                <h3>Mariana Augusto</h3>
-                <p>Texto de apresentação a inserir posteriormente. Aqui podes falar sobre o papel no evento e a experiência académica.</p>
-            </div>
-            <div class="membro-card">
-                <img src="https://via.placeholder.com/150" alt="Sofia Barata" class="membro-img">
-                <h3>Sofia Barata</h3>
-                <p>Texto de apresentação a inserir posteriormente. Aqui podes falar sobre o papel no evento e a experiência académica.</p>
-            </div>
-            <div class="membro-card">
-                <img src="https://via.placeholder.com/150" alt="Sofia Bilro" class="membro-img">
-                <h3>Sofia Bilro</h3>
-                <p>Texto de apresentação a inserir posteriormente. Aqui podes falar sobre o papel no evento e a experiência académica.</p>
-            </div>
+    <main id="conteudo-principal">
+        <div class="page-header">
+            <h1 data-i18n="page-title">Quem Somos</h1>
+            <p data-i18n="page-subtitle">A equipa e a inspiração por trás do Vai na Volta.</p>
         </div>
 
-        <div class="moodboard-section">
-            <h2 class="section-title" style="margin-bottom: 10px;">A Nossa Inspiração</h2>
-            <p style="color: var(--texto-cinza); margin-bottom: 30px;">O ambiente e as referências visuais que dão vida a este encontro.</p>
-            <img src="moodboarddvainavolta.jpg" alt="Moodboard Vai na Volta" class="moodboard-img"> </div>
-    </section>
+        <section class="container">
+            <h2 class="section-title" data-i18n="sec-equipa">A Equipa</h2>
+            <div class="equipa-grid">
+                <div class="membro-card">
+                    <img src="https://via.placeholder.com/150" alt="Daniel Lucena" class="membro-img">
+                    <h3>Daniel Lucena</h3>
+                    <p data-i18n="bio-geral">Texto de apresentação a inserir posteriormente. Aqui podes falar sobre o papel no evento e a experiência académica.</p>
+                </div>
+                <div class="membro-card">
+                    <img src="https://via.placeholder.com/150" alt="Dawton Pessanha" class="membro-img">
+                    <h3>Dawton Pessanha</h3>
+                    <p data-i18n="bio-geral">Texto de apresentação a inserir posteriormente. Aqui podes falar sobre o papel no evento e a experiência académica.</p>
+                </div>
+                <div class="membro-card">
+                    <img src="https://via.placeholder.com/150" alt="Mariana Augusto" class="membro-img">
+                    <h3>Mariana Augusto</h3>
+                    <p data-i18n="bio-geral">Texto de apresentação a inserir posteriormente. Aqui podes falar sobre o papel no evento e a experiência académica.</p>
+                </div>
+                <div class="membro-card">
+                    <img src="https://via.placeholder.com/150" alt="Sofia Barata" class="membro-img">
+                    <h3>Sofia Barata</h3>
+                    <p data-i18n="bio-geral">Texto de apresentação a inserir posteriormente. Aqui podes falar sobre o papel no evento e a experiência académica.</p>
+                </div>
+                <div class="membro-card">
+                    <img src="https://via.placeholder.com/150" alt="Sofia Bilro" class="membro-img">
+                    <h3>Sofia Bilro</h3>
+                    <p data-i18n="bio-geral">Texto de apresentação a inserir posteriormente. Aqui podes falar sobre o papel no evento e a experiência académica.</p>
+                </div>
+            </div>
+
+            <div class="moodboard-section">
+                <h2 class="section-title" style="margin-bottom: 10px;" data-i18n="sec-inspiracao">A Nossa Inspiração</h2>
+                <p style="color: var(--texto-cinza); margin-bottom: 30px;" data-i18n="insp-desc">O ambiente e as referências visuais que dão vida a este encontro.</p>
+                <img src="moodboarddvainavolta.jpg" alt="Moodboard Vai na Volta" class="moodboard-img"> 
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="parceiros-grid">
@@ -215,10 +298,139 @@
             <img src="https://i.ibb.co/N2hPNVrH/image.png" alt="Império Dantas">
         </div>
         <div class="footer-contato">
-            <p>Contacto: evento@vainavolta.site</p>
-            <p>&copy; 2026 Vai na Volta. Todos os direitos reservados.</p>
+            <p data-i18n="footer-contacto">Contacto: evento@vainavolta.site</p>
+            
+            <div class="social-links">
+                <a href="https://www.instagram.com/vai_na_volta_evento?igsh=MXZrMjB1am5pa3plaA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Siga-nos no Instagram">
+                    <svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="https://www.tiktok.com/@vai.na.volta?_r=1&_t=ZG-950dwjxGAl6" target="_blank" rel="noopener noreferrer" aria-label="Siga-nos no TikTok">
+                    <svg width="30" height="30" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 15.66a6.34 6.34 0 0010.86 4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.04-.11v-.01z"/></svg>
+                </a>
+            </div>
+
+            <p data-i18n="footer-direitos">&copy; 2026 Vai na Volta. Todos os direitos reservados.</p>
         </div>
     </footer>
 
+    <script>
+        const translations = {
+            pt: {
+                "nav-inicio": "Início",
+                "nav-quem-somos": "Quem Somos",
+                "btn-ouvir": "Ouvir",
+                "btn-parar": "Parar",
+                "aviso-idioma": "Idioma da página alterado para Português.",
+                "page-title": "Quem Somos",
+                "page-subtitle": "A equipa e a inspiração por trás do Vai na Volta.",
+                "sec-equipa": "A Equipa",
+                "bio-geral": "Texto de apresentação a inserir posteriormente. Aqui podes falar sobre o papel no evento e a experiência académica.",
+                "sec-inspiracao": "A Nossa Inspiração",
+                "insp-desc": "O ambiente e as referências visuais que dão vida a este encontro.",
+                "footer-contacto": "Contacto: evento@vainavolta.site",
+                "footer-direitos": "© 2026 Vai na Volta. Todos os direitos reservados."
+            },
+            en: {
+                "nav-inicio": "Home",
+                "nav-quem-somos": "About Us",
+                "btn-ouvir": "Listen",
+                "btn-parar": "Stop",
+                "aviso-idioma": "Page language changed to English.",
+                "page-title": "About Us",
+                "page-subtitle": "The team and inspiration behind Vai na Volta.",
+                "sec-equipa": "The Team",
+                "bio-geral": "Presentation text to be inserted later. Here you can talk about the role in the event and academic experience.",
+                "sec-inspiracao": "Our Inspiration",
+                "insp-desc": "The atmosphere and visual references that bring this meeting to life.",
+                "footer-contacto": "Contact: evento@vainavolta.site",
+                "footer-direitos": "© 2026 Vai na Volta. All rights reserved."
+            },
+            es: {
+                "nav-inicio": "Inicio",
+                "nav-quem-somos": "Quiénes Somos",
+                "btn-ouvir": "Escuchar",
+                "btn-parar": "Detener",
+                "aviso-idioma": "Idioma de la página cambiado a Español.",
+                "page-title": "Quiénes Somos",
+                "page-subtitle": "El equipo y la inspiración detrás de Vai na Volta.",
+                "sec-equipa": "El Equipo",
+                "bio-geral": "Texto de presentación a insertar posteriormente. Aquí puedes hablar sobre el papel en el evento y la experiencia académica.",
+                "sec-inspiracao": "Nuestra Inspiración",
+                "insp-desc": "El ambiente y las referencias visuales que dan vida a este encuentro.",
+                "footer-contacto": "Contacto: evento@vainavolta.site",
+                "footer-direitos": "© 2026 Vai na Volta. Todos los derechos reservados."
+            }
+        };
+
+        let synth = window.speechSynthesis;
+
+        function toggleSpeech() {
+            let lang = document.documentElement.lang || 'pt'; 
+            let btnSpan = document.querySelector('#btn-tts span');
+            let btn = document.getElementById('btn-tts');
+            
+            if (synth.speaking) {
+                synth.cancel();
+                btnSpan.innerHTML = translations[lang]["btn-ouvir"];
+                btn.firstChild.nodeValue = '🔊 ';
+                return;
+            }
+
+            let textToRead = "";
+            let elementosParaLer = document.querySelectorAll('main [data-i18n]');
+            
+            elementosParaLer.forEach(el => {
+                textToRead += el.innerText + ". "; 
+            });
+
+            let utterance = new SpeechSynthesisUtterance(textToRead);
+            
+            if(lang === 'pt') utterance.lang = 'pt-PT';
+            if(lang === 'en') utterance.lang = 'en-US';
+            if(lang === 'es') utterance.lang = 'es-ES';
+
+            utterance.onend = function() {
+                btnSpan.innerHTML = translations[lang]["btn-ouvir"];
+                btn.firstChild.nodeValue = '🔊 ';
+            }
+
+            btnSpan.innerHTML = translations[lang]["btn-parar"];
+            btn.firstChild.nodeValue = '⏹️ ';
+            synth.speak(utterance);
+        }
+
+        function changeLang(lang) {
+            document.documentElement.lang = lang; 
+            
+            document.getElementById('aria-live-region').innerText = translations[lang]["aviso-idioma"];
+            
+            if(synth.speaking) {
+                synth.cancel();
+                let btnSpan = document.querySelector('#btn-tts span');
+                btnSpan.innerHTML = translations[lang]["btn-ouvir"];
+                document.getElementById('btn-tts').firstChild.nodeValue = '🔊 ';
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            
+            const buttons = document.querySelectorAll('.lang-toggles button:not(#btn-tts)');
+            buttons.forEach(btn => {
+                btn.style.borderColor = '#e2e8f0';
+                btn.style.color = 'var(--texto-cinza)';
+                btn.style.fontWeight = 'normal';
+            });
+            const activeBtn = document.querySelector(`button[onclick="changeLang('${lang}')"]`);
+            if(activeBtn) {
+                activeBtn.style.borderColor = 'var(--azul-inst)';
+                activeBtn.style.color = 'var(--azul-inst)';
+                activeBtn.style.fontWeight = 'bold';
+            }
+        }
+    </script>
 </body>
 </html>
