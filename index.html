@@ -3,7 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vai na Volta - Encontro entre Culturas</title>
+    
+    <title>Vai na Volta | Evento Cultural em Carcavelos - Maio 2026</title>
+    <meta name="description" content="Junte-se ao Vai na Volta a 16 de maio de 2026. Um encontro único de culturas, gastronomia, música e dança no Mercado de Carcavelos. Não perca um dos melhores eventos em Cascais e na grande Lisboa.">
+    <meta name="keywords" content="Eventos maio, eventos Lisboa, eventos Cascais, evento cultural, Carcavelos, Vai na Volta, gastronomia, música">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Vai na Volta - Encontro entre Culturas",
+      "startDate": "2026-05-16T15:00:00+01:00",
+      "endDate": "2026-05-16T19:00:00+01:00",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "Recinto do Mercado de Carcavelos",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cascais",
+          "addressRegion": "Lisboa",
+          "addressCountry": "PT"
+        }
+      },
+      "description": "Um encontro entre culturas. Experiências únicas através da gastronomia, música, dança e tradições."
+    }
+    </script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Source+Sans+Pro:wght@300;400;600&display=swap');
 
@@ -188,101 +214,180 @@
             color: var(--texto-cinza);
             font-size: 0.9em;
         }
+        .social-links {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .social-links a svg {
+            fill: var(--texto-cinza);
+            transition: fill 0.3s, transform 0.3s;
+        }
+        .social-links a:hover svg {
+            fill: var(--azul-inst);
+            transform: translateY(-3px);
+        }
+
+        /* Classes de Acessibilidade Adicionadas */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--vermelho-destaque);
+            color: white;
+            padding: 8px;
+            z-index: 1000;
+            transition: top 0.3s;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+        :focus-visible {
+            outline: 3px solid var(--vermelho-destaque);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+        .btn-audio {
+            cursor: pointer;
+            background: var(--fundo-claro);
+            border: 1px solid var(--azul-inst);
+            padding: 5px 12px;
+            border-radius: 20px;
+            color: var(--azul-inst);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+            font-size: 0.9em;
+        }
+        .btn-audio:hover {
+            background-color: var(--azul-inst);
+            color: var(--branco);
+        }
     </style>
 </head>
 <body>
 
-    <nav>
+    <a href="#conteudo-principal" class="skip-link">Saltar para o conteúdo principal</a>
+
+    <nav aria-label="Navegação Principal">
         <div class="nav-logo">
             <img src="https://i.ibb.co/DPW3w63P/image.png" alt="Logótipo Vai na Volta">
         </div>
         <div class="nav-links">
-            <a href="index.html" style="color: var(--vermelho-destaque);">Início</a>
-            <a href="quem-somos.html">Quem Somos</a>
+            <a href="index.html" style="color: var(--vermelho-destaque);" data-i18n="nav-inicio" aria-current="page">Início</a>
+            <a href="quem-somos.html" data-i18n="nav-quem-somos">Quem Somos</a>
+        </div>
+        <div class="lang-toggles" style="margin-left: auto; display: flex; gap: 10px; align-items: center;">
+            <button onclick="toggleSpeech()" class="btn-audio" aria-label="Ouvir conteúdo da página" id="btn-tts">
+                🔊 <span data-i18n="btn-ouvir">Ouvir</span>
+            </button>
+            <button onclick="changeLang('pt')" aria-label="Mudar para Português" style="cursor:pointer; background:none; border:1px solid var(--azul-inst); padding:5px 10px; border-radius:4px; color:var(--azul-inst); font-weight:bold;">PT</button>
+            <button onclick="changeLang('en')" aria-label="Switch to English" style="cursor:pointer; background:none; border:1px solid #e2e8f0; padding:5px 10px; border-radius:4px; color:var(--texto-cinza);">EN</button>
+            <button onclick="changeLang('es')" aria-label="Cambiar a Español" style="cursor:pointer; background:none; border:1px solid #e2e8f0; padding:5px 10px; border-radius:4px; color:var(--texto-cinza);">ES</button>
         </div>
     </nav>
 
-    <section class="hero" id="inicio">
-        <h1>Vai na Volta</h1>
-        <p class="subtitle">Um encontro entre culturas. Experiências únicas através da gastronomia, música, dança e tradições.</p>
-        <div class="hero-info">
-            <strong>16 de Maio de 2026</strong> | 15h00 - 19h00 <br>
-            Recinto do Mercado de Carcavelos
-        </div>
-    </section>
+    <div id="aria-live-region" aria-live="polite" class="sr-only"></div>
 
-    <section class="container">
-        <h2 class="section-title">O Programa</h2>
-        <div class="programa-grid">
-            <div class="programa-card">
-                <h3>Palco Principal</h3>
-                <ul>
-                    <li>Cerimónia de abertura do Evento</li>
-                    <li>Outras danças a confirmar</li>
-                    <li>Samba (Brasil)</li>
-                    <li>Zumba (Colômbia)</li>
-                    <li>Sevilhanas (Espanha)</li>
-                    <li>Yoga (Índia)</li>
-                    <li>Cerimónia de encerramento do Evento</li>
-                </ul>
+    <main id="conteudo-principal">
+        <section class="hero" id="inicio">
+            <h1 data-i18n="hero-title">Vai na Volta</h1>
+            <p class="subtitle" data-i18n="hero-subtitle">Um encontro entre culturas. Experiências únicas através da gastronomia, música, dança e tradições.</p>
+            <div class="hero-info" data-i18n="hero-info">
+                <strong>16 de Maio de 2026</strong> | 15h00 - 19h00 <br>
+                Recinto do Mercado de Carcavelos
             </div>
-            <div class="programa-card">
-                <h3>Bancas (15h00 - 19h00)</h3>
-                <ul>
-                    <li><strong>Guiné:</strong> Comida</li>
-                    <li><strong>Índia:</strong> Yoga - exposição & aula (1h)</li>
-                    <li><strong>Equador:</strong> Showcooking e Artesanato</li>
-                    <li><strong>Panamá:</strong> Showcooking e Artesanato</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="container" style="background-color: var(--fundo-claro);">
-        <h2 class="section-title">Culturas Presentes</h2>
-        <div class="culturas-grid">
-            <div class="cultura-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_Guinea-Bissau.svg" alt="Guiné-Bissau">
-                <span>Guiné-Bissau</span>
+        <section class="container">
+            <h2 class="section-title" data-i18n="sec-programa">O Programa</h2>
+            <div class="programa-grid">
+                <div class="programa-card">
+                    <h3 data-i18n="prog-palco">Palco Principal</h3>
+                    <ul>
+                        <li data-i18n="prog-abertura">Cerimónia de abertura do Evento</li>
+                        <li data-i18n="prog-dancas">Outras danças a confirmar</li>
+                        <li data-i18n="prog-samba">Samba (Brasil)</li>
+                        <li data-i18n="prog-zumba">Zumba (Colômbia)</li>
+                        <li data-i18n="prog-sevilhanas">Sevilhanas (Espanha)</li>
+                        <li data-i18n="prog-yoga">Yoga (Índia)</li>
+                        <li data-i18n="prog-encerramento">Cerimónia de encerramento do Evento</li>
+                    </ul>
+                </div>
+                <div class="programa-card">
+                    <h3 data-i18n="prog-bancas">Bancas (15h00 - 19h00)</h3>
+                    <ul>
+                        <li data-i18n="banca-guine"><strong>Guiné:</strong> Comida</li>
+                        <li data-i18n="banca-india"><strong>Índia:</strong> Yoga - exposição & aula (1h)</li>
+                        <li data-i18n="banca-equador"><strong>Equador:</strong> Showcooking e Artesanato</li>
+                        <li data-i18n="banca-panama"><strong>Panamá:</strong> Showcooking e Artesanato</li>
+                    </ul>
+                </div>
             </div>
-            <div class="cultura-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_India.svg/250px-Flag_of_India.svg.png" alt="Índia">
-                <span>Índia</span>
-            </div>
-            <div class="cultura-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Flag_of_Ecuador.svg/1280px-Flag_of_Ecuador.svg.png" alt="Equador">
-                <span>Equador</span>
-            </div>
-            <div class="cultura-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/250px-Flag_of_Brazil.svg.png" alt="Brasil">
-                <span>Brasil</span>
-            </div>
-            <div class="cultura-item">
-                <img src="https://www.embaixadadopanama.pt/Images/panama_flag_02.jpg" alt="Panamá">
-                <span>Panamá</span>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="container" style="text-align: center;">
-        <h2 class="section-title">Localização do Evento</h2>
-        <p style="color: var(--texto-cinza); margin-bottom: 30px;">Recinto do Mercado de Carcavelos</p>
-        <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--azul-inst);">
-            <iframe 
-                width="100%" 
-                height="400" 
-                frameborder="0" 
-                scrolling="no" 
-                marginheight="0" 
-                marginwidth="0" 
-                src="https://maps.google.com/maps?q=38.68855289643894,-9.33203742919582&hl=pt-PT&z=16&output=embed"
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-    </section>
+        <section class="container" style="background-color: var(--fundo-claro);">
+            <h2 class="section-title" data-i18n="sec-culturas">Culturas Presentes</h2>
+            <div class="culturas-grid">
+                <div class="cultura-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_Guinea-Bissau.svg" alt="Guiné-Bissau">
+                    <span>Guiné-Bissau</span>
+                </div>
+                <div class="cultura-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_India.svg/250px-Flag_of_India.svg.png" alt="Índia">
+                    <span>Índia</span>
+                </div>
+                <div class="cultura-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Flag_of_Ecuador.svg/1280px-Flag_of_Ecuador.svg.png" alt="Equador">
+                    <span>Equador</span>
+                </div>
+                <div class="cultura-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/250px-Flag_of_Brazil.svg.png" alt="Brasil">
+                    <span>Brasil</span>
+                </div>
+                <div class="cultura-item">
+                    <img src="https://www.embaixadadopanama.pt/Images/panama_flag_02.jpg" alt="Panamá">
+                    <span>Panamá</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" style="text-align: center;">
+            <h2 class="section-title" data-i18n="sec-localizacao">Localização do Evento</h2>
+            <p style="color: var(--texto-cinza); margin-bottom: 30px;" data-i18n="loc-desc">Recinto do Mercado de Carcavelos</p>
+            <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--azul-inst);">
+                <iframe 
+                    title="Mapa de localização do evento no Google Maps"
+                    width="100%" 
+                    height="400" 
+                    frameborder="0" 
+                    scrolling="no" 
+                    marginheight="0" 
+                    marginwidth="0" 
+                    src="https://maps.google.com/maps?q=38.68855289643894,-9.33203742919582&hl=pt-PT&z=16&output=embed"
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="parceiros-grid">
@@ -294,10 +399,181 @@
             <img src="https://i.ibb.co/N2hPNVrH/image.png" alt="Império Dantas">
         </div>
         <div class="footer-contato">
-            <p>Contacto: evento@vainavolta.site</p>
-            <p>&copy; 2026 Vai na Volta. Todos os direitos reservados.</p>
+            <p data-i18n="footer-contacto">Contacto: evento@vainavolta.site</p>
+            
+            <div class="social-links">
+                <a href="https://www.instagram.com/vai_na_volta_evento?igsh=MXZrMjB1am5pa3plaA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Siga-nos no Instagram">
+                    <svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="https://www.tiktok.com/@vai.na.volta?_r=1&_t=ZG-950dwjxGAl6" target="_blank" rel="noopener noreferrer" aria-label="Siga-nos no TikTok">
+                    <svg width="30" height="30" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 15.66a6.34 6.34 0 0010.86 4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.04-.11v-.01z"/></svg>
+                </a>
+            </div>
+
+            <p data-i18n="footer-direitos">© 2026 Vai na Volta. Todos os direitos reservados.</p>
         </div>
     </footer>
 
+    <script>
+        const translations = {
+            pt: {
+                "nav-inicio": "Início",
+                "nav-quem-somos": "Quem Somos",
+                "btn-ouvir": "Ouvir",
+                "btn-parar": "Parar",
+                "aviso-idioma": "Idioma da página alterado para Português.",
+                "hero-title": "Vai na Volta",
+                "hero-subtitle": "Um encontro entre culturas. Experiências únicas através da gastronomia, música, dança e tradições.",
+                "hero-info": "<strong>16 de Maio de 2026</strong> | 15h00 - 19h00 <br> Recinto do Mercado de Carcavelos",
+                "sec-programa": "O Programa",
+                "prog-palco": "Palco Principal",
+                "prog-abertura": "Cerimónia de abertura do Evento",
+                "prog-dancas": "Outras danças a confirmar",
+                "prog-samba": "Samba (Brasil)",
+                "prog-zumba": "Zumba (Colômbia)",
+                "prog-sevilhanas": "Sevilhanas (Espanha)",
+                "prog-yoga": "Yoga (Índia)",
+                "prog-encerramento": "Cerimónia de encerramento do Evento",
+                "prog-bancas": "Bancas (15h00 - 19h00)",
+                "banca-guine": "<strong>Guiné:</strong> Comida",
+                "banca-india": "<strong>Índia:</strong> Yoga - exposição & aula (1h)",
+                "banca-equador": "<strong>Equador:</strong> Showcooking e Artesanato",
+                "banca-panama": "<strong>Panamá:</strong> Showcooking e Artesanato",
+                "sec-culturas": "Culturas Presentes",
+                "sec-localizacao": "Localização do Evento",
+                "loc-desc": "Recinto do Mercado de Carcavelos",
+                "footer-contacto": "Contacto: evento@vainavolta.site",
+                "footer-direitos": "© 2026 Vai na Volta. Todos os direitos reservados."
+            },
+            en: {
+                "nav-inicio": "Home",
+                "nav-quem-somos": "About Us",
+                "btn-ouvir": "Listen",
+                "btn-parar": "Stop",
+                "aviso-idioma": "Page language changed to English.",
+                "hero-title": "Vai na Volta",
+                "hero-subtitle": "A meeting of cultures. Unique experiences through gastronomy, music, dance, and traditions.",
+                "hero-info": "<strong>May 16, 2026</strong> | 3:00 PM - 7:00 PM <br> Carcavelos Market Venue",
+                "sec-programa": "The Program",
+                "prog-palco": "Main Stage",
+                "prog-abertura": "Event Opening Ceremony",
+                "prog-dancas": "Other dances to be confirmed",
+                "prog-samba": "Samba (Brazil)",
+                "prog-zumba": "Zumba (Colombia)",
+                "prog-sevilhanas": "Sevillanas (Spain)",
+                "prog-yoga": "Yoga (India)",
+                "prog-encerramento": "Event Closing Ceremony",
+                "prog-bancas": "Stalls (3:00 PM - 7:00 PM)",
+                "banca-guine": "<strong>Guinea:</strong> Food",
+                "banca-india": "<strong>India:</strong> Yoga - exhibition & class (1h)",
+                "banca-equador": "<strong>Ecuador:</strong> Showcooking and Crafts",
+                "banca-panama": "<strong>Panama:</strong> Showcooking and Crafts",
+                "sec-culturas": "Present Cultures",
+                "sec-localizacao": "Event Location",
+                "loc-desc": "Carcavelos Market Venue",
+                "footer-contacto": "Contact: evento@vainavolta.site",
+                "footer-direitos": "© 2026 Vai na Volta. All rights reserved."
+            },
+            es: {
+                "nav-inicio": "Inicio",
+                "nav-quem-somos": "Quiénes Somos",
+                "btn-ouvir": "Escuchar",
+                "btn-parar": "Detener",
+                "aviso-idioma": "Idioma de la página cambiado a Español.",
+                "hero-title": "Vai na Volta",
+                "hero-subtitle": "Un encuentro entre culturas. Experiencias únicas a través de la gastronomía, música, danza y tradiciones.",
+                "hero-info": "<strong>16 de Mayo de 2026</strong> | 15h00 - 19h00 <br> Recinto del Mercado de Carcavelos",
+                "sec-programa": "El Programa",
+                "prog-palco": "Escenario Principal",
+                "prog-abertura": "Ceremonia de apertura del Evento",
+                "prog-dancas": "Otras danzas por confirmar",
+                "prog-samba": "Samba (Brasil)",
+                "prog-zumba": "Zumba (Colombia)",
+                "prog-sevilhanas": "Sevillanas (España)",
+                "prog-yoga": "Yoga (India)",
+                "prog-encerramento": "Ceremonia de clausura del Evento",
+                "prog-bancas": "Puestos (15h00 - 19h00)",
+                "banca-guine": "<strong>Guinea:</strong> Comida",
+                "banca-india": "<strong>India:</strong> Yoga - exhibición y clase (1h)",
+                "banca-equador": "<strong>Ecuador:</strong> Showcooking y Artesanía",
+                "banca-panama": "<strong>Panamá:</strong> Showcooking y Artesanía",
+                "sec-culturas": "Culturas Presentes",
+                "sec-localizacao": "Ubicación del Evento",
+                "loc-desc": "Recinto del Mercado de Carcavelos",
+                "footer-contacto": "Contacto: evento@vainavolta.site",
+                "footer-direitos": "© 2026 Vai na Volta. Todos los derechos reservados."
+            }
+        };
+
+        let synth = window.speechSynthesis;
+
+        function toggleSpeech() {
+            let lang = document.documentElement.lang || 'pt'; 
+            let btnSpan = document.querySelector('#btn-tts span');
+            let btn = document.getElementById('btn-tts');
+            
+            if (synth.speaking) {
+                synth.cancel();
+                btnSpan.innerHTML = translations[lang]["btn-ouvir"];
+                btn.firstChild.nodeValue = '🔊 ';
+                return;
+            }
+
+            let textToRead = "";
+            let elementosParaLer = document.querySelectorAll('main [data-i18n]');
+            
+            elementosParaLer.forEach(el => {
+                textToRead += el.innerText + ". "; 
+            });
+
+            let utterance = new SpeechSynthesisUtterance(textToRead);
+            
+            if(lang === 'pt') utterance.lang = 'pt-PT';
+            if(lang === 'en') utterance.lang = 'en-US';
+            if(lang === 'es') utterance.lang = 'es-ES';
+
+            utterance.onend = function() {
+                btnSpan.innerHTML = translations[lang]["btn-ouvir"];
+                btn.firstChild.nodeValue = '🔊 ';
+            }
+
+            btnSpan.innerHTML = translations[lang]["btn-parar"];
+            btn.firstChild.nodeValue = '⏹️ ';
+            synth.speak(utterance);
+        }
+
+        function changeLang(lang) {
+            document.documentElement.lang = lang; 
+            
+            document.getElementById('aria-live-region').innerText = translations[lang]["aviso-idioma"];
+            
+            if(synth.speaking) {
+                synth.cancel();
+                let btnSpan = document.querySelector('#btn-tts span');
+                btnSpan.innerHTML = translations[lang]["btn-ouvir"];
+                document.getElementById('btn-tts').firstChild.nodeValue = '🔊 ';
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            
+            const buttons = document.querySelectorAll('.lang-toggles button:not(#btn-tts)');
+            buttons.forEach(btn => {
+                btn.style.borderColor = '#e2e8f0';
+                btn.style.color = 'var(--texto-cinza)';
+                btn.style.fontWeight = 'normal';
+            });
+            const activeBtn = document.querySelector(`button[onclick="changeLang('${lang}')"]`);
+            if(activeBtn) {
+                activeBtn.style.borderColor = 'var(--azul-inst)';
+                activeBtn.style.color = 'var(--azul-inst)';
+                activeBtn.style.fontWeight = 'bold';
+            }
+        }
+    </script>
 </body>
 </html>
