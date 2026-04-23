@@ -111,6 +111,71 @@
             margin: 0;
         }
 
+        /* --- Início: Estilos Missão, Visão e Valores --- */
+        .mvv-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .mvv-card {
+            background: var(--branco);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--azul-inst);
+            text-align: center;
+        }
+        .mvv-icon {
+            width: 60px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .valores-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        .valores-header img {
+            width: 50px;
+            height: auto;
+        }
+        .valores-grid-7 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        .valor-item {
+            background: var(--branco);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--vermelho-destaque);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .valor-icon {
+            width: 40px;
+            height: auto;
+            flex-shrink: 0;
+        }
+        .valor-texto h4 {
+            color: var(--azul-inst);
+            margin: 0 0 5px 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1em;
+        }
+        .valor-texto p {
+            margin: 0;
+            font-size: 0.95em;
+            color: var(--texto-cinza);
+        }
+        /* --- Fim: Estilos Missão, Visão e Valores --- */
+
         .moodboard-section {
             text-align: center;
             background-color: var(--branco);
@@ -280,6 +345,75 @@
                 </div>
             </div>
 
+            <div class="mvv-container">
+                <div class="mvv-card">
+                    <img src="missao.PNG" alt="Ícone Missão" class="mvv-icon">
+                    <h2 style="font-family: 'Playfair Display', serif; color: var(--azul-inst); margin-top: 0;" data-i18n="tit-missao">Missão</h2>
+                    <p data-i18n="txt-missao">Proporcionar uma experiência multicultural imersiva que promova o contacto entre diferentes culturas, através da partilha de tradições, gastronomia, música e expressão artística, incentivando o respeito, a inclusão e o diálogo intercultural junto da comunidade.</p>
+                </div>
+                <div class="mvv-card">
+                    <img src="visao.PNG" alt="Ícone Visão" class="mvv-icon">
+                    <h2 style="font-family: 'Playfair Display', serif; color: var(--azul-inst); margin-top: 0;" data-i18n="tit-visao">Visão</h2>
+                    <p data-i18n="txt-visao">Afirmar o Vai na Volta como um evento de referência na promoção da diversidade cultural a nível local, reconhecido pela sua capacidade de criar experiências autênticas, impactantes e geradoras de ligação entre pessoas e culturas.</p>
+                </div>
+            </div>
+
+            <div class="valores-header">
+                <img src="valores.PNG" alt="Ícone Valores">
+                <h2 class="section-title" style="margin-bottom: 0;" data-i18n="tit-valores">Valores</h2>
+            </div>
+            
+            <div class="valores-grid-7">
+                <div class="valor-item">
+                    <img src="diversidade.PNG" alt="Diversidade" class="valor-icon">
+                    <div class="valor-texto">
+                        <h4 data-i18n="val-div-tit">Diversidade</h4>
+                        <p data-i18n="val-div-txt">Valorizamos a riqueza das diferentes culturas e tradições.</p>
+                    </div>
+                </div>
+                <div class="valor-item">
+                    <img src="inclusao.PNG" alt="Inclusão" class="valor-icon">
+                    <div class="valor-texto">
+                        <h4 data-i18n="val-inc-tit">Inclusão</h4>
+                        <p data-i18n="val-inc-txt">Promovemos um espaço aberto, acessível e representativo para todos.</p>
+                    </div>
+                </div>
+                <div class="valor-item">
+                    <img src="partilha.PNG" alt="Partilha" class="valor-icon">
+                    <div class="valor-texto">
+                        <h4 data-i18n="val-par-tit">Partilha</h4>
+                        <p data-i18n="val-par-txt">Acreditamos na troca de experiências como forma de aprendizagem e crescimento.</p>
+                    </div>
+                </div>
+                <div class="valor-item">
+                    <img src="respeito.PNG" alt="Respeito" class="valor-icon">
+                    <div class="valor-texto">
+                        <h4 data-i18n="val-res-tit">Respeito</h4>
+                        <p data-i18n="val-res-txt">Incentivamos a empatia e a valorização do outro.</p>
+                    </div>
+                </div>
+                <div class="valor-item">
+                    <img src="autenticidade.PNG" alt="Autenticidade" class="valor-icon">
+                    <div class="valor-texto">
+                        <h4 data-i18n="val-aut-tit">Autenticidade</h4>
+                        <p data-i18n="val-aut-txt">Priorizamos experiências genuínas e representativas das culturas envolvidas.</p>
+                    </div>
+                </div>
+                <div class="valor-item">
+                    <img src="comunidade.PNG" alt="Comunidade" class="valor-icon">
+                    <div class="valor-texto">
+                        <h4 data-i18n="val-com-tit">Comunidade</h4>
+                        <p data-i18n="val-com-txt">Reforçamos a ligação entre pessoas, culturas e território.</p>
+                    </div>
+                </div>
+                <div class="valor-item">
+                    <img src="experiencia.PNG" alt="Experiência" class="valor-icon">
+                    <div class="valor-texto">
+                        <h4 data-i18n="val-exp-tit">Experiência</h4>
+                        <p data-i18n="val-exp-txt">Criamos momentos memoráveis com impacto emocional e cultural.</p>
+                    </div>
+                </div>
+            </div>
             <div class="moodboard-section">
                 <h2 class="section-title" style="margin-bottom: 10px;" data-i18n="sec-inspiracao">A Nossa Inspiração</h2>
                 <p style="color: var(--texto-cinza); margin-bottom: 30px;" data-i18n="insp-desc">O ambiente e as referências visuais que dão vida a este encontro.</p>
@@ -328,7 +462,26 @@
                 "sec-inspiracao": "A Nossa Inspiração",
                 "insp-desc": "O ambiente e as referências visuais que dão vida a este encontro.",
                 "footer-contacto": "Contacto: evento@vainavolta.site",
-                "footer-direitos": "© 2026 Vai na Volta. Todos os direitos reservados."
+                "footer-direitos": "© 2026 Vai na Volta. Todos os direitos reservados.",
+                "tit-missao": "Missão",
+                "txt-missao": "Proporcionar uma experiência multicultural imersiva que promova o contacto entre diferentes culturas, através da partilha de tradições, gastronomia, música e expressão artística, incentivando o respeito, a inclusão e o diálogo intercultural junto da comunidade.",
+                "tit-visao": "Visão",
+                "txt-visao": "Afirmar o Vai na Volta como um evento de referência na promoção da diversidade cultural a nível local, reconhecido pela sua capacidade de criar experiências autênticas, impactantes e geradoras de ligação entre pessoas e culturas.",
+                "tit-valores": "Valores",
+                "val-div-tit": "Diversidade",
+                "val-div-txt": "Valorizamos a riqueza das diferentes culturas e tradições.",
+                "val-inc-tit": "Inclusão",
+                "val-inc-txt": "Promovemos um espaço aberto, acessível e representativo para todos.",
+                "val-par-tit": "Partilha",
+                "val-par-txt": "Acreditamos na troca de experiências como forma de aprendizagem e crescimento.",
+                "val-res-tit": "Respeito",
+                "val-res-txt": "Incentivamos a empatia e a valorização do outro.",
+                "val-aut-tit": "Autenticidade",
+                "val-aut-txt": "Priorizamos experiências genuínas e representativas das culturas envolvidas.",
+                "val-com-tit": "Comunidade",
+                "val-com-txt": "Reforçamos a ligação entre pessoas, culturas e território.",
+                "val-exp-tit": "Experiência",
+                "val-exp-txt": "Criamos momentos memoráveis com impacto emocional e cultural."
             },
             en: {
                 "nav-inicio": "Home",
@@ -343,7 +496,26 @@
                 "sec-inspiracao": "Our Inspiration",
                 "insp-desc": "The atmosphere and visual references that bring this meeting to life.",
                 "footer-contacto": "Contact: evento@vainavolta.site",
-                "footer-direitos": "© 2026 Vai na Volta. All rights reserved."
+                "footer-direitos": "© 2026 Vai na Volta. All rights reserved.",
+                "tit-missao": "Mission",
+                "txt-missao": "To provide an immersive multicultural experience that promotes contact between different cultures through the sharing of traditions, gastronomy, music, and artistic expression, encouraging respect, inclusion, and intercultural dialogue within the community.",
+                "tit-visao": "Vision",
+                "txt-visao": "To establish Vai na Volta as a benchmark event in promoting cultural diversity locally, recognized for its ability to create authentic, impactful experiences that foster connections between people and cultures.",
+                "tit-valores": "Values",
+                "val-div-tit": "Diversity",
+                "val-div-txt": "We value the richness of different cultures and traditions.",
+                "val-inc-tit": "Inclusion",
+                "val-inc-txt": "We promote an open, accessible, and representative space for everyone.",
+                "val-par-tit": "Sharing",
+                "val-par-txt": "We believe in exchanging experiences as a means of learning and growth.",
+                "val-res-tit": "Respect",
+                "val-res-txt": "We encourage empathy and the appreciation of others.",
+                "val-aut-tit": "Authenticity",
+                "val-aut-txt": "We prioritize genuine experiences that truly represent the involved cultures.",
+                "val-com-tit": "Community",
+                "val-com-txt": "We strengthen the connection between people, cultures, and the local area.",
+                "val-exp-tit": "Experience",
+                "val-exp-txt": "We create memorable moments with emotional and cultural impact."
             },
             es: {
                 "nav-inicio": "Inicio",
@@ -358,7 +530,26 @@
                 "sec-inspiracao": "Nuestra Inspiración",
                 "insp-desc": "El ambiente y las referencias visuales que dan vida a este encuentro.",
                 "footer-contacto": "Contacto: evento@vainavolta.site",
-                "footer-direitos": "© 2026 Vai na Volta. Todos los derechos reservados."
+                "footer-direitos": "© 2026 Vai na Volta. Todos los derechos reservados.",
+                "tit-missao": "Misión",
+                "txt-missao": "Proporcionar una experiencia multicultural inmersiva que promueva el contacto entre diferentes culturas, a través del intercambio de tradiciones, gastronomía, música y expresión artística, fomentando el respeto, la inclusión y el diálogo intercultural en la comunidad.",
+                "tit-visao": "Visión",
+                "txt-visao": "Consolidar a Vai na Volta como un evento de referencia en la promoción de la diversidad cultural a nivel local, reconocido por su capacidad de crear experiencias auténticas, impactantes y generadoras de vínculos entre personas y culturas.",
+                "tit-valores": "Valores",
+                "val-div-tit": "Diversidad",
+                "val-div-txt": "Valoramos la riqueza de las diferentes culturas y tradiciones.",
+                "val-inc-tit": "Inclusión",
+                "val-inc-txt": "Promovemos un espacio abierto, accesible y representativo para todos.",
+                "val-par-tit": "Intercambio",
+                "val-par-txt": "Creemos en el intercambio de experiencias como forma de aprendizaje y crecimiento.",
+                "val-res-tit": "Respeto",
+                "val-res-txt": "Fomentamos la empatía y la valoración del otro.",
+                "val-aut-tit": "Autenticidad",
+                "val-aut-txt": "Priorizamos experiencias genuinas y representativas de las culturas involucradas.",
+                "val-com-tit": "Comunidad",
+                "val-com-txt": "Reforzamos el vínculo entre personas, culturas y el territorio.",
+                "val-exp-tit": "Experiencia",
+                "val-exp-txt": "Creamos momentos memorables con impacto emocional y cultural."
             }
         };
 
